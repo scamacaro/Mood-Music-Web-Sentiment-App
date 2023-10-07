@@ -1,0 +1,46 @@
+<!-- Specify the document type: HTML -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Set the title of the web page -->
+        <title>Music Mood Web Sentiment App</title>
+                <!-- Add inline CSS to set the background color -->
+                <style>
+                    /* Set the background color for the entire body of the page */
+                    body {
+                        background-color: #AEDFF7;  /* This is a baby blue color */
+                    }
+                </style>
+    </head>
+    <body>
+        <!-- Main heading for the web page -->
+        <h1>Welcome to Music Mood Web Sentiment App!</h1>
+        <h2>Music Mood is a unique application that suggests music based on your mood.</h2>
+        <h3>Tell us about your day, and we'll analyze your mood and suggest some music.</h3>
+        
+        <!-- Create a form where users can enter text -->
+        <form action="/MusicMood" method="post">
+            <!-- Textarea allows users to type in their text -->
+            <textarea name="text" rows="10" cols="30"></textarea><br>
+            
+            <!-- Submit button to submit the form -->
+            <input type="submit" value="Analyze">
+        </form>
+
+        <!-- Display the sentiment and music recommendations if available -->
+        {% if sentiment %}
+            <p>Sentiment: {{ sentiment }}</p>
+            <p>Polarity: {{ polarity }}</p>
+            
+            <!-- Heading for music suggestions -->
+            <h2>Music Suggestions for your Mood:</h2>
+            
+            <!-- List of music recommendations based on user mood -->
+            <ul>
+                {% for song in songs %}
+                    <li>{{ song }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </body>
+</html>
